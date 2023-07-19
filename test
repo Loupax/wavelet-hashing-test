@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for file in `ls *.png *.jpg `
+do
+  P=$(python3 hash.py ${file})
+  G=$(go run hash.go ${file})
+
+  if [ "$P" != "$G" ]; then
+    echo "$file"
+  else
+    echo "Ok"
+  fi
+
+done
